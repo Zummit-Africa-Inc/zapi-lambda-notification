@@ -11,4 +11,9 @@ export class EmailController {
   async sendEmailConfirmation(@Body() emailDto: SendEmailDto) {
     return await this.emailService.sendMailNotification(emailDto);
   }
+
+  @EventPattern('notify_test')
+  async testNotify(@Body() body: any) {
+    console.log(body);
+  }
 }
