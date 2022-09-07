@@ -12,7 +12,7 @@ export class EmailService {
     // Set the mail service provider
     this.nodeMailerTransport = createTransport({
       host: this.configService.get(configConstant.sendMail.host),
-      service: "Gmail",
+      service: 'Gmail',
       auth: {
         user: this.configService.get(configConstant.sendMail.username),
         pass: this.configService.get(configConstant.sendMail.password),
@@ -21,12 +21,12 @@ export class EmailService {
   }
 
   // Function that conveys mail notification to user
-  async sendMailNotification(sendEmailDto: SendEmailDto) {
+  async sendMailNotification({ email, subject, text }: SendEmailDto) {
     return this.sendMail({
       from: this.configService.get(configConstant.sendMail.emailAuthor),
-      to: sendEmailDto.email,
-      subject: sendEmailDto.subject,
-      text: sendEmailDto.text,
+      to: email,
+      subject,
+      text,
     });
   }
 
