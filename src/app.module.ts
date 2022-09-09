@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { EmailModule } from './email/email.module';
+import { WsNotificationModule } from './ws-notification/ws-notification.module';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { EmailModule } from './email/email.module';
     //   }
     // }),
     ConfigModule.forRoot({isGlobal: true}),
-     EmailModule],
+     EmailModule, WsNotificationModule],
   controllers: [AppController],
   providers: [AppService],
 })
