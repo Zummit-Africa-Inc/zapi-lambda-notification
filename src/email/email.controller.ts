@@ -7,7 +7,13 @@ import { EventPattern } from '@nestjs/microservices';
 export class EmailController {
   constructor(private readonly emailService: EmailService) {}
 
-  @EventPattern('verification')
+  /* this is the rabbitMQ listener for the messages from the identity service*/
+  // @EventPattern('verification')
+  // async sendEmailConfirmation(@Body() emailDto: SendEmailDto) {
+  //   return await this.emailService.sendMailNotification(emailDto);
+  // }
+
+    @Post('/send-mail')
   async sendEmailConfirmation(@Body() emailDto: SendEmailDto) {
     return await this.emailService.sendMailNotification(emailDto);
   }
