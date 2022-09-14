@@ -1,4 +1,3 @@
-import { NotificationImportance } from "../common/enums/notification.importance.enum";
 import { NotificationStatus } from "../common/enums/notification.status.enum";
 import { SharedEntity } from "../common/model/sharedEntity";
 import { Column, Entity } from "typeorm";
@@ -8,7 +7,7 @@ export class Notification extends SharedEntity{
     @Column({nullable:true})
     notification_title: string
 
-    @Column()
+    @Column({nullable:false})
     notification_detail: string
 
     @Column({
@@ -18,10 +17,9 @@ export class Notification extends SharedEntity{
     })
     notification_status: NotificationStatus
 
-    @Column({
-        type: "enum",
-        enum: NotificationImportance,
-        default: NotificationImportance.NOTURGENTNOTIMPORTANT  
-    })
-    notification_importance: NotificationImportance
+    @Column({nullable: false})
+    developer_id: string
+
+    @Column({nullable:false})
+    event_id : string
 }
