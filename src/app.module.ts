@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { EmailModule } from './email/email.module';
 import { WsNotificationModule } from './ws-notification/ws-notification.module';
+import { NotificationModule } from './notification/notification.module';
 
 @Module({
   imports: [
@@ -18,7 +19,7 @@ import { WsNotificationModule } from './ws-notification/ws-notification.module';
     //   }
     // }),
     ConfigModule.forRoot({isGlobal: true}),
-     EmailModule, WsNotificationModule],
+     EmailModule, WsNotificationModule, NotificationModule],
   controllers: [AppController],
   providers: [AppService],
 })
