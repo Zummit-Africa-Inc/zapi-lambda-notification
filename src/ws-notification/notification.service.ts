@@ -4,7 +4,7 @@ import { SubscriptionDto } from "./dto/subscription.dto";
 import { NotificationsGateway } from "./notification.gateway";
 
 @Injectable()
-export class NotificationService{
+export class WsNotificationService{
     constructor(
         private readonly NotificationsGateway : NotificationsGateway
     ){}
