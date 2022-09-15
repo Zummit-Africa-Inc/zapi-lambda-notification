@@ -19,7 +19,4 @@ export class Notification extends SharedEntity{
 
     @Column({nullable: false})
     developer_id: string
-
-    @Column({nullable:false})
-    event_id : string
 }
