@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { WsNotificationController } from './notification.controller';
-import { NotificationsGateway } from './notification.gateway';
-import { WsNotificationService } from './notification.service';
+import { WsNotificationController } from './ws-notification.controller';
+import { NotificationsGateway } from './ws-notification.gateway';
+import { WsNotificationService } from './ws-notification.service';
 
 
 @Module({

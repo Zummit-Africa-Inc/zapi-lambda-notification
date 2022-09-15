@@ -2,7 +2,7 @@ import { Body, Controller, Post } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
 import { ApiDto } from "./dto/api.dto";
 import { SubscriptionDto } from "./dto/subscription.dto";
-import { WsNotificationService } from "./notification.service";
+import { WsNotificationService } from "./ws-notification.service";
 
 @ApiTags('websocket-notification')
 @Controller("ws-notify")

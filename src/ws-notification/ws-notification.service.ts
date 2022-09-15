@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { ApiDto } from "./dto/api.dto";
 import { SubscriptionDto } from "./dto/subscription.dto";
-import { NotificationsGateway } from "./notification.gateway";
+import { NotificationsGateway } from "./ws-notification.gateway";
 
 @Injectable()
 export class WsNotificationService{
