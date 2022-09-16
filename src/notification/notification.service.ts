@@ -15,7 +15,7 @@ export class NotificationService {
 	//save nuser notification to database
     async saveNotificationToDb(dto: SaveNotificationDto){
         try {
-            const savedNotification = await this.notificationRepo.save(dto)
+            const savedNotification = await this.notificationRepo.create(dto)
             return savedNotification
         } catch (error) {
             throw new BadRequestException(
@@ -43,7 +43,7 @@ export class NotificationService {
         } catch (error) {
             throw new BadRequestException(
                 ZuAppResponse.BadRequest(
-                    "Notification not saved",
+                    "Internal server error",
                     error.message,
                     "500"
                 )
