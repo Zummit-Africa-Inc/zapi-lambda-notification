@@ -15,8 +15,4 @@ export class SaveNotificationDto {
     @IsString()
     @ApiProperty()
     developer_id: string
-
-    @IsString()
-    @ApiProperty()
-    event_id: string
 }
