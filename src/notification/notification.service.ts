@@ -15,7 +15,7 @@ export class NotificationService {
 	//save nuser notification to database
     async saveNotificationToDb(dto: SaveNotificationDto){
         try {
-            const savedNotification = await this.notificationRepo.create(dto)
+            const savedNotification = await this.notificationRepo.save(dto)
             return savedNotification
         } catch (error) {
             throw new BadRequestException(
