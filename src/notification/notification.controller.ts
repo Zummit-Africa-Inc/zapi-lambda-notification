@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { SaveNotificationDto } from './dto/save-notification.dto';
+import { UpdateNotificationStatus } from './dto/update-notification-status.dto';
 import { NotificationService } from './notification.service';
 
 @ApiTags('notification')
@@ -31,5 +32,10 @@ export class NotificationController {
         return await this.notificationService.searchForReadNotifications(developerId)
     }
 
+    @Post('updateNotificationStatus:notificationId')
+    async updateNotificationStatus(
+        @Param('notificationId') notificationId: string,
+        @Body() dto : UpdateNotificationStatus){
+        return await this.notificationService.updateNotificationStatus(notificationId, dto)
+    }
 }
-
