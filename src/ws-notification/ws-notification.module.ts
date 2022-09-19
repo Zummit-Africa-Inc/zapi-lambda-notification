@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { NotificationController } from './notification.controller';
-import { NotificationsGateway } from './notification.gateway';
-import { NotificationService } from './notification.service';
+import { WsNotificationController } from './ws-notification.controller';
+import { NotificationsGateway } from './ws-notification.gateway';
+import { WsNotificationService } from './ws-notification.service';
 
 
 @Module({
-  providers: [NotificationsGateway, NotificationService],
-  controllers: [NotificationController],
+  providers: [NotificationsGateway, WsNotificationService],
+  controllers: [WsNotificationController],
 })
 export class WsNotificationModule {}

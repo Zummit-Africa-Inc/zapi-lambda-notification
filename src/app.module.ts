@@ -5,6 +5,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { EmailModule } from './email/email.module';
 import { WsNotificationModule } from './ws-notification/ws-notification.module';
+import { NotificationModule } from './notification/notification.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Notification } from './entities/notification.entity';
+import { AppDataSource } from 'ormconfig';
 
 @Module({
   imports: [
@@ -18,7 +22,9 @@ import { WsNotificationModule } from './ws-notification/ws-notification.module';
     //   }
     // }),
     ConfigModule.forRoot({isGlobal: true}),
-     EmailModule, WsNotificationModule],
+    TypeOrmModule.forFeature([Notification]),
+    TypeOrmModule.forRoot(AppDataSource.options),
+     EmailModule, WsNotificationModule, NotificationModule],
   controllers: [AppController],
   providers: [AppService],
 })
