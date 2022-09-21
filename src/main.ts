@@ -5,11 +5,11 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors();
-  app.setGlobalPrefix('zapi-notify');
+  app.setGlobalPrefix('api/v1');
 
   const options = new DocumentBuilder()
     .setTitle('Zapi Lamda Notification Service')
-    .setDescription('Zummit Africa API hub email & text notification')
+    .setDescription('Zummit Africa Email & Text Notification Hub')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
