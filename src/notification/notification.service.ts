@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { SaveNotificationDto } from './dto/save-notification.dto';
 import { Notification } from 'src/entities/notification.entity';
 import { ZuAppResponse } from 'src/common/helpers/response';
+import { UpdateNotificationStatus } from './dto/update-notification-status.dto';
 
 @Injectable()
 export class NotificationService {
@@ -86,8 +87,38 @@ export class NotificationService {
     }
 
     // update notification status in db
-    async updateNotificationStatus(notificationId: string){}
+    async updateNotificationStatus(notificationId: string, dto: UpdateNotificationStatus){
+        try {
+            const notificationExists = await this.notificationRepo.findOne({where:{id : notificationId}})
+            if(!notificationExists){
+                throw new BadRequestException(
+                    ZuAppResponse.BadRequest(
+                        "Notification not found",
+                        "404"
+                    )
+                )
+            }
 
-    //notify user
-    async notifyUser(){}
+            const updatedStatus = await this.notificationRepo.update(notificationId, dto)
+            if(!updatedStatus){
+                throw new BadRequestException(
+                    ZuAppResponse.BadRequest(
+                        "Notification status not updated",
+                        "500"
+                    )
+                )
+            }
+            return updatedStatus
+            
+        } catch (error) {
+            throw new BadRequestException(
+                ZuAppResponse.BadRequest(
+                    "Internal server error",
+                    error.message,
+                    "500"
+                )
+            )
+        }
+        
+    }
 }
