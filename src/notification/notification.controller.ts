@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Param, Patch } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { ZuAppResponse } from 'src/common/helpers/response';
+import { SaveNotificationDto } from './dto/save-notification.dto';
 import { UpdateNotificationStatus } from './dto/update-notification-status.dto';
 import { NotificationService } from './notification.service';
 
@@ -11,6 +12,12 @@ export class NotificationController {
         private readonly notificationService: NotificationService
 
     ){}
+
+    @Post('saveNotificationToDb')
+    async saveNotificationToDb(@Body() dto: SaveNotificationDto){
+        const savedNotification = await this.notificationService.saveNotificationToDb(dto)
+        return ZuAppResponse.Ok(savedNotification, 'Notification saved', '201')
+    }
 
     @Get('searchForUserNotifications/:developerId')
     async searchForUserNotifications(@Param('developerId') developerId: string){
