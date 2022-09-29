@@ -10,5 +10,5 @@ export class ApiDto{
     @IsString()
     @IsNotEmpty()
     @ApiProperty()
-    developerId: string
+    profileId: string
 }

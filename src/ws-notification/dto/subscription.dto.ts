@@ -8,9 +8,9 @@ export class SubscriptionDto{
 
     @IsNotEmpty()
     @ApiProperty()
-    profileId: string
+    subscriberId: string
 
     @IsNotEmpty()
     @ApiProperty()
-    developerId: string
+    profileId: string
 }

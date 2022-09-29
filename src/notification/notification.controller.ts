@@ -13,23 +13,17 @@ export class NotificationController {
 
     ){}
 
-    @Post('saveNotificationToDb')
-    async saveNotificationToDb(@Body() dto: SaveNotificationDto){
-        const savedNotification = await this.notificationService.saveNotificationToDb(dto)
-        return ZuAppResponse.Ok(savedNotification, 'Notification saved', '201')
-    }
-
-    @Get('searchForUserNotifications/:developerId')
+    @Get('allNotifications:developerId')
     async searchForUserNotifications(@Param('developerId') developerId: string){
         return await this.notificationService.searchForUserNotifications(developerId)
     }
 
-    @Get('searchForUnreadNotifications/:developerId')
+    @Get('unreadNotifications/:developerId')
     async searchForUnreadNotifications(@Param('developerId') developerId: string){
         return await this.notificationService.searchForUnreadNotifications(developerId)
     }
 
-    @Get('searchForReadNotifications/:developerId')
+    @Get('readNotifications/:developerId')
     async searchForReadNotifications(@Param('developerId') developerId: string){
         return await this.notificationService.searchForReadNotifications(developerId)
     }
@@ -38,7 +32,7 @@ export class NotificationController {
     async updateNotificationStatus(
         @Param('notificationId') notificationId: string,
         @Body() dto : UpdateNotificationStatus){
-        const updatedNotifications = await this.notificationService.updateNotificationStatus(notificationId, dto)
-        return ZuAppResponse.Ok(updatedNotifications, 'Notification status changed to read','200')
+        await this.notificationService.updateNotificationStatus(notificationId, dto)
+        return ZuAppResponse.Ok('Notification status changed to read','200')
     }
 }
