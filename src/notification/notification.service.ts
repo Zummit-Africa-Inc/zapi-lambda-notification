@@ -38,10 +38,10 @@ export class NotificationService {
     }
 
     // saerch for all notifications belonging to a user
-    async searchForUserNotifications(developerId : string){
+    async searchForUserNotifications(profileId : string){
         try {
             //check if user exists
-            const userNotifications = await this.notificationRepo.find({where : { developer_id: developerId}})
+            const userNotifications = await this.notificationRepo.find({where : { developer_id: profileId}})
             if(!userNotifications){
                 ZuAppResponse.Ok(
                     "No notifications found",
@@ -61,8 +61,8 @@ export class NotificationService {
     }
 
     // search for all unread notifications belonging to a user
-    async searchForUnreadNotifications(developerId: string){
-        const userNotifications = await this.searchForUserNotifications(developerId)
+    async searchForUnreadNotifications(profileId: string){
+        const userNotifications = await this.searchForUserNotifications(profileId)
         
         // create array to store unread notifications
         const unreadNotifications = []
@@ -78,8 +78,8 @@ export class NotificationService {
     }
 
     // search for all read notifications belonging to a user
-    async searchForReadNotifications(developerId: string){
-        const userNotifications = await this.searchForUserNotifications(developerId)
+    async searchForReadNotifications(profileId: string){
+        const userNotifications = await this.searchForUserNotifications(profileId)
         
         // create array to store read notifications
         const readNotifications = []

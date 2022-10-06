@@ -1,7 +1,6 @@
 import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { ZuAppResponse } from 'src/common/helpers/response';
-import { SaveNotificationDto } from './dto/save-notification.dto';
 import { UpdateNotificationStatus } from './dto/update-notification-status.dto';
 import { NotificationService } from './notification.service';
 
@@ -13,19 +12,19 @@ export class NotificationController {
 
     ){}
 
-    @Get('allNotifications:developerId')
-    async searchForUserNotifications(@Param('developerId') developerId: string){
-        return await this.notificationService.searchForUserNotifications(developerId)
+    @Get('allNotifications:profileId')
+    async searchForUserNotifications(@Param('profileId') profileId: string){
+        return await this.notificationService.searchForUserNotifications(profileId)
     }
 
-    @Get('unreadNotifications/:developerId')
-    async searchForUnreadNotifications(@Param('developerId') developerId: string){
-        return await this.notificationService.searchForUnreadNotifications(developerId)
+    @Get('unreadNotifications/:profileId')
+    async searchForUnreadNotifications(@Param('profileId') profileId: string){
+        return await this.notificationService.searchForUnreadNotifications(profileId)
     }
 
-    @Get('readNotifications/:developerId')
-    async searchForReadNotifications(@Param('developerId') developerId: string){
-        return await this.notificationService.searchForReadNotifications(developerId)
+    @Get('readNotifications/:profileId')
+    async searchForReadNotifications(@Param('profileId') profileId: string){
+        return await this.notificationService.searchForReadNotifications(profileId)
     }
 
     @Patch('updateNotificationStatus/:notificationId')
