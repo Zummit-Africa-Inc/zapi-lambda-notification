@@ -1,4 +1,5 @@
 import { Body, Controller, Post } from "@nestjs/common";
+import { EventPattern } from "@nestjs/microservices";
 import { ApiTags } from "@nestjs/swagger";
 import { ApiDto } from "./dto/api.dto";
 import { SubscriptionDto } from "./dto/subscription.dto";
@@ -11,28 +12,28 @@ export class WsNotificationController{
         private readonly wsNotificationService: WsNotificationService
     ){}
 
-    @Post('/subscription-event')
+    @EventPattern('subscription')
     async sendNewSubscription(
         @Body() dto: SubscriptionDto
     ){
         return await this.wsNotificationService.sendNewSubscriptionEvent(dto)
     }
 
-    @Post('/unsubscription-event')
+    @EventPattern('unsubscription')
     async sendUnsubscription(
         @Body() dto: SubscriptionDto
     ){
         return await this.wsNotificationService.sendUnsubscriptionEvent(dto)
     }
 
-    @Post('/api-hosted')
+    @EventPattern('apiHosted')
     async sendApiHosted(
         @Body() dto: ApiDto
     ){
         return await this.wsNotificationService.sendApiHostedEvent(dto)
     }
 
-    @Post('/api-down')
+    @EventPattern('apiDown')
     async sendApiDown(
         @Body() dto: ApiDto
     ){
