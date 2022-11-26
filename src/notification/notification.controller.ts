@@ -12,7 +12,7 @@ export class NotificationController {
 
     ){}
 
-    @Get('allNotifications:profileId')
+    @Get('allNotifications/:profileId')
     async searchForUserNotifications(@Param('profileId') profileId: string){
         return await this.notificationService.searchForUserNotifications(profileId)
     }
