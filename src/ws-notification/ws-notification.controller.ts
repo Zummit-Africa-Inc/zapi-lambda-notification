@@ -19,8 +19,23 @@ export class WsNotificationController{
         return await this.wsNotificationService.sendNewSubscriptionEvent(dto)
     }
 
+    @Post('subscription')
+    async sendNewWsSubscription(
+        @Body() dto: SubscriptionDto
+    ){
+        return await this.wsNotificationService.sendNewSubscriptionEvent(dto)
+    }
+
+
     @EventPattern('unsubscription')
     async sendUnsubscription(
+        @Body() dto: SubscriptionDto
+    ){
+        return await this.wsNotificationService.sendUnsubscriptionEvent(dto)
+    }
+
+    @Post('unsubscription')
+    async sendWsUnsubscription(
         @Body() dto: SubscriptionDto
     ){
         return await this.wsNotificationService.sendUnsubscriptionEvent(dto)
@@ -33,8 +48,22 @@ export class WsNotificationController{
         return await this.wsNotificationService.sendApiHostedEvent(dto)
     }
 
+    @Post('apiHosted')
+    async sendWsApiHosted(
+        @Body() dto: ApiDto
+    ){
+        return await this.wsNotificationService.sendApiHostedEvent(dto)
+    }
+
     @EventPattern('apiDown')
     async sendApiDown(
+        @Body() dto: ApiDto
+    ){
+        return await this.wsNotificationService.sendApiDownEvent(dto)
+    }
+
+    @Post('apiDown')
+    async sendWsApiDown(
         @Body() dto: ApiDto
     ){
         return await this.wsNotificationService.sendApiDownEvent(dto)
