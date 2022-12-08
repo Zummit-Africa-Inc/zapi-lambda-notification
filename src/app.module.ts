@@ -9,6 +9,7 @@ import { NotificationModule } from './notification/notification.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Notification } from './entities/notification.entity';
 import { AppDataSource } from 'ormconfig';
+import { EmailController } from './email/email.controller';
 
 @Module({
   imports: [
@@ -22,7 +23,7 @@ import { AppDataSource } from 'ormconfig';
     //   }
     // }),
     ConfigModule.forRoot({isGlobal: true}),
-    TypeOrmModule.forFeature([Notification]),
+    TypeOrmModule.forFeature([Notification,  ]),
     TypeOrmModule.forRoot(AppDataSource.options),
      EmailModule, WsNotificationModule, NotificationModule],
   controllers: [AppController],

@@ -2,6 +2,7 @@ import { Body, Controller, Post } from '@nestjs/common';
 import { EmailService } from './email.service';
 import { SendEmailDto } from './dto/send-email.dto';
 import { EventPattern } from '@nestjs/microservices';
+import { ZuAppResponse } from 'src/common/helpers/response';
 
 @Controller('email')
 export class EmailController {
@@ -29,4 +30,11 @@ export class EmailController {
 
     console.log(body);
   }
+
+  @Post('/send')
+  async sendMail(@Body() body: SendEmailDto){
+   const mailResonse = await this.emailService.sendMailNotification(body)
+    return ZuAppResponse.Ok(mailResonse, "Mail Sent", 200)
+  }
+
 }
