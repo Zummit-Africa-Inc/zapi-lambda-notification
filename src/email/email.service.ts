@@ -22,7 +22,7 @@ export class EmailService {
 
   // Function that conveys mail notification to user
   async sendMailNotification({ email, subject, text }: SendEmailDto) {
-    return this.sendMail({
+    return await this.sendMail({
       from: this.configService.get(configConstant.sendMail.emailAuthor),
       to: email,
       subject,
@@ -31,7 +31,7 @@ export class EmailService {
   }
 
   //Mail transporter
-  sendMail(option: Mail.options) {
-    return this.nodeMailerTransport.sendMail(option);
+  async sendMail(option: Mail.options) {
+    return await this.nodeMailerTransport.sendMail(option);
   }
 }
