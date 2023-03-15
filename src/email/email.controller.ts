@@ -13,6 +13,11 @@ export class EmailController {
     return await this.emailService.sendMailNotification(emailDto);
   }
 
+  @Post('test')
+  async sendEmailConfirmatio(@Body() emailDto: SendEmailDto) {
+    return await this.emailService.sendMailNotification(emailDto);
+  }
+
   @EventPattern('notify_test')
   async testNotify(@Body() body: any) {
     await this.emailService.sendMailNotification({
