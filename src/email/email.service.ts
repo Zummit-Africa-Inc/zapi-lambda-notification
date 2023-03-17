@@ -23,7 +23,6 @@ export class EmailService {
   // Function that conveys mail notification to user
   async sendMailNotification({ email, subject, text }: SendEmailDto) {
     try {
-      console.log(email, subject, text);
       return this.sendMail({
         from: this.configService.get(configConstant.sendMail.emailAuthor),
         to: email,
