@@ -8,15 +8,15 @@ export const configConstant = {
   },
   sendMail: {
     host: 'MAIL_HOST',
+    port: 'MAIL_PORT',
     username: 'MAIL_USERNAME',
     password: 'MAIL_PASSWORD',
-    emailAuthor: 'ZUMMIT_EMAIL_AUTHOR'
+    emailAuthor: 'ZUMMIT_EMAIL_AUTHOR',
   },
   jwtConstants: {
     access_secret: 'ACCESS_SECRET',
     refresh_secret: 'REFRESH_SECRET',
     access_time: 'ACCESS_TIME',
-    refresh_time: 'REFRESH_TIME'
-  }
-
+    refresh_time: 'REFRESH_TIME',
+  },
 };
